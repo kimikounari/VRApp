@@ -155,14 +155,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         WWWForm form = new WWWForm();
         form.AddField("userid", user_number);
-        buttonTestText.text = "userid" + user_number;// 送信データのログ出力
+        buttonTestText.text = user_number + "としてログイン";// 送信データのログ出力
         using (UnityWebRequest www = UnityWebRequest.Post(apiUrl, form))
         {
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                buttonTestText.text = www.error;
+                buttonTestText.text = "IDがちがいます。";
             }
             else
             {
